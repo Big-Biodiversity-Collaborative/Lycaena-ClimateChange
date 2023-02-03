@@ -2,3 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
+
+# OS X Auto-generated
+.DS_Store
+.Rdata
+.httr-oauth
