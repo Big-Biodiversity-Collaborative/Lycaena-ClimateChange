@@ -11,3 +11,5 @@
 # ignore data downloaded from GBIF and BioClim
 *.xml
 *.zip
+data/gbif/downloaded*
+GBIF_Records*/*
