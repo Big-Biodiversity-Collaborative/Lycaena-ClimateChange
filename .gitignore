@@ -7,3 +7,7 @@
 .DS_Store
 .Rdata
 .httr-oauth
+
+# ignore data downloaded from GBIF and BioClim
+*.xml
+*.zip
