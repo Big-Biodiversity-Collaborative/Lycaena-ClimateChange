@@ -3,6 +3,9 @@
 # rlaura@arizona.edu
 # 2023-02-07
 
+require(dplyr)
+require(spocc)
+
 # Read in a spreadsheet with all the species of interest
 gbif_data <- read.csv(file = "data/l_arota.csv")
 replace <- FALSE
