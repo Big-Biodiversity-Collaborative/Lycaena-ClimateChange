@@ -194,7 +194,7 @@ plot(glm_predict)
 # We now take that model, and evaluate it using the observation data and the 
 # psuedo-absence data we reserved for model testing. We then use this test to 
 # establish a cutoff of occurrence probability to determine the boundaries of 
-# the saguaro range
+# the range
 
 # Use testing data for model evaluation
 glm_eval <- pa_evaluate(p = testing[testing$pa == 1, ],
@@ -203,7 +203,7 @@ glm_eval <- pa_evaluate(p = testing[testing$pa == 1, ],
 
 # We pass 3 pieces of info to the function above: 
 # 1) "p = ..." p stands for presence data, so we pass all the rows in the testing
-# data that correspond to a location where there was a saguaro present
+# data that correspond to a location where there was a record of occurrence
 # 2) "a = ..." a stands for absence data, we pass all pseudo-absence rows in our
 # dataset 
 # 3) model = glm_model - This is the model object we are evaluating. Think of it
@@ -213,9 +213,9 @@ glm_eval <- pa_evaluate(p = testing[testing$pa == 1, ],
 # With the pa_evaluate function, we pass data that we "know" what the right answer
 # should be for these probability calculation. That is, the model should predict
 # values close to 1 for those rows that we pass to the p argument and should predict
-# values close to 0 for those rows that we pass the a agrument. We use this info 
+# values close to 0 for those rows that we pass the a argument. We use this info 
 # on model performance to determine the probability value to use as a cutoff to
-# saying whether a particular location is suitable or unsuitable for saguaros.
+# saying whether a particular location is suitable or unsuitable.
 
 # Determine minimum threshold for "presence"
 glm_threshold <- glm_eval@thresholds$max_spec_sens
@@ -249,4 +249,4 @@ plot(my_map,
      add = TRUE,
      border = "grey5")
 
-
+glm_predict > glm_threshold
