@@ -13,6 +13,7 @@ bioclim_data <- worldclim_global(var = "bio", # download all 19 bioclimatic vari
                                  path = "data/") # location to download to
 
 # Read in observations for Lycaena arota (update to add all species eventually)
+# ADD FOR LOOP HERE TO ITERATE THROUGH ALL CSVs IN THIS FOLDER AND DO ALL THE FOLLOWING STEPS
 obs_data <- read.csv(file = "data/gbif/downloaded/lycaena_arota-gbif.csv")
 
 # Check the data to make sure it loaded correctly
@@ -199,7 +200,8 @@ plot(glm_predict)
 # Use testing data for model evaluation
 glm_eval <- pa_evaluate(p = testing[testing$pa == 1, ],
                         a = testing[testing$pa == 0, ],
-                        model = glm_model)
+                        model = glm_model,
+                        type = "response")
 
 # We pass 3 pieces of info to the function above: 
 # 1) "p = ..." p stands for presence data, so we pass all the rows in the testing
@@ -244,9 +246,9 @@ points(x = obs_data$longitude,
        pch = "+",
        cex = 0.75)
 
-# Redraw those country borders
-plot(my_map, 
-     add = TRUE,
-     border = "grey5")
+ # Redraw those country borders THIS IS JUST ADDING ANOTHER BORDER
+# plot(my_map, 
+#     add = TRUE,
+#     border = "grey5")
 
 glm_predict > glm_threshold
